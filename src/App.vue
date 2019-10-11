@@ -1,19 +1,18 @@
 <template>
-
 <div id="app">
   <div class="container">
-    <h1 class="titre">To-Do List du ...</h1>
-    <form class="form-group" ...>
+    <h1 class="titre">Todo List du {{date}}</h1>
+    <form class="form-group" v-on:submit.prevent="add()">
       <input class="txt form-control" type="text" v-model="name" />
       <button type="submit" class="btn btn-primary">Ajouter</button>
     </form>
     <ul class="list-group">
-      <li ...>
+      <li v-for="(todo, index) in todos" v-bind:key="todo">
         <label>
           <input type="checkbox" />
-          <span>...</span>
+          <span>{{ todo }}</span>
         </label>
-        <button class="delete-btn btn btn-primary" type="button" ... ><p class="delete"> x </p></button>
+        <button class="delete-btn btn btn-primary" type="button" v-on:click="remove(todo, index)"><p class="delete"> x </p></button>
       </li>
     </ul>
   </div>
@@ -24,23 +23,31 @@
 <script>
 
 export default {
-
   data(){
-
+    return {
+      todos: []
+    }
   },
-
   computed: {
-
+    date: function(){
+      let date = new Date();
+      return date.toLocaleDateString();
+    }
   },
-
   methods: {
-
+    add: function () {
+      if (this.name === null) { return; }
+      this.todos.push(this.name);
+      this.name = null;
+    },
+    
+    remove: function (index) {
+      this.todos.splice(index, 1);
+    }
   }
-
 }
 
 </script>
-
 
 <style>
 
