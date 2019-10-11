@@ -3,17 +3,17 @@
 <div id="app">
   <div class="container">
     <h1 class="titre">To-Do List du ...</h1>
-    <form class="form-group">
+    <form class="form-group" ...>
       <input class="txt form-control" type="text" v-model="name" />
       <button type="submit" class="btn btn-primary">Ajouter</button>
     </form>
     <ul class="list-group">
-      <li>
+      <li ...>
         <label>
           <input type="checkbox" />
           <span>...</span>
         </label>
-        <button class="delete-btn btn btn-primary" type="button"><p class="delete"> x </p></button>
+        <button class="delete-btn btn btn-primary" type="button" ... ><p class="delete"> x </p></button>
       </li>
     </ul>
   </div>
